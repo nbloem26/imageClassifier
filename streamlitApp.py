@@ -1,5 +1,4 @@
 import streamlit as st
-import fastai
 from fastai.widgets import *
 from fastai.vision import *
 from PIL import Image
@@ -9,7 +8,7 @@ def load_image(image_file):
 	return img
 
 st.set_page_config(layout="wide")
-st.title("Image Classifier: Tank, Truck, or Plane")
+st.header("Image Classifier: Tank, Truck, or Plane")
 
 st.markdown(
     "This is a simple image classifier using a convolutional neural network (CNN) for image classification. "
@@ -17,7 +16,7 @@ st.markdown(
     # "The training data is available for confirmation as well as an URL option to classify your own images. "
 )
 
-@st.cache
+@st.cache(allow_output_mutation=True)
 def long_running_function():
     learn = load_learner('.','trainedModel.pkl')
     return learn
